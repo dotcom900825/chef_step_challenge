@@ -1,0 +1,49 @@
+<div class='container'>
+  <div class='text-center logo'>
+    <%= image_tag "logo.png", :width=>200%>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-4'>
+      <h3>Remove duplicate emails</h3>
+
+      <ul class="list-group">
+        <li class="list-group-item"><a href="#/">worker.rb</a> </li>
+        <li class="list-group-item active"><a href="#/single_thread_solution">single_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/multi_threaded_solution">multi_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/discussion">Discussion</a></li>
+      </ul>
+    </div>
+
+    <div class='col-md-8'>
+      <h4 class='code-header-first'>Single thread solution</h4>
+      <snippet>
+  require "benchmark"
+  require "faker"
+  require "./worker.rb"
+
+  email_array = []
+  output = []
+  duplicate_email = Faker::Internet.email
+
+  5000000.times do 
+    random_email = Faker::Internet.email
+    while random_email != duplicate_email
+      email_array << random_email
+      break    
+    end
+    email_array << duplicate_email
+  end
+
+  test_array = email_array.shuffle
+
+  Benchmark.bm do |bm| 
+    bm.report do 
+      worker.remove_duplicates
+      output = worker.array
+    end
+  end
+      </snippet>
+    </div>
+  </div>
+</div>

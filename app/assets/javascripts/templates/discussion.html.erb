@@ -1,0 +1,25 @@
+<div class='container'>
+  <div class='text-center logo'>
+    <%= image_tag "logo.png", :width=>200%>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-4'>
+      <h3>Remove duplicate emails</h3>
+
+      <ul class="list-group">
+        <li class="list-group-item"><a href="#/">worker.rb</a> </li>
+        <li class="list-group-item"><a href="#/single_thread_solution">single_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/multi_threaded_solution">multi_thread.rb</a></li>
+        <li class="list-group-item active"><a href="#/discussion">Discussion</a></li>
+      </ul>
+    </div>
+
+    <div class='col-md-8'>
+      <h4 class='code-header-first'>Discussion and results</h4>
+      <p>
+        The algorithm's time complexity is O(N), the space complexity is also O(N) due to the hash map. For 100000 email addresses with 50% duplicate, the average single thread solution's run time on my 2014's version Macbook Pro (8GB memory, 2.6Ghz I5, 256 GB SSD disk) is around 0.06 seconds, the multi-threads solution (10 workers) is around 0.04seconds. 
+      </p>
+    </div>
+  </div>
+</div>

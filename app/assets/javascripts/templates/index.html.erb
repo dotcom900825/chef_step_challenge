@@ -1,0 +1,47 @@
+<div class='container'>
+  <div class='text-center logo'>
+    <%= image_tag "logo.png", :width=>200%>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-4'>
+      <h3>Remove duplicate emails</h3>
+
+      <ul class="list-group">
+        <li class="list-group-item active"><a href="#/">worker.rb</a> </li>
+        <li class="list-group-item"><a href="#/single_thread_solution">single_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/multi_threaded_solution">multi_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/discussion">Discussion</a></li>
+      </ul>
+    </div>
+
+    <div class='col-md-8'>
+      <h4 class='code-header-first'>worker.rb</h4>
+      <snippet>
+  class Worker
+
+    attr_accessor :array
+
+    def initialize(array)
+      @array = array
+    end
+
+    def remove_duplicates
+      counter_index = 0
+      hash = Hash.new(false)
+
+      @array.each do |email|
+        if !hash[email]
+          hash[email] = true
+          @array[counter_index] = email
+          counter_index += 1
+        end
+      end
+
+      @array =  @array[0...counter_index]
+    end
+  end
+      </snippet>
+    </div>
+  </div>
+</div>
