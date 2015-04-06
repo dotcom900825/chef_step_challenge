@@ -3,7 +3,7 @@ angular.module('csChallenge', ['templates', 'ngRoute'])
 .controller("ChallengeController", ['$scope', function($scope){
 }])
 
-.config(function($routeProvider){
+.config(["$routeProvider", function($routeProvider){
   $routeProvider
   .when('/', {
     templateUrl: "index.html",
@@ -21,7 +21,7 @@ angular.module('csChallenge', ['templates', 'ngRoute'])
     templateUrl: "discussion.html",
     controller: "ChallengeController"
   })
-})
+}])
 
 .directive('snippet', ['$timeout', '$interpolate', function($timeout, $interpolate) {
     return {
