@@ -1,7 +1,7 @@
 angular.module('csChallenge', ['templates', 'ngRoute'])
 
-.controller("ChallengeController", function($scope){
-})
+.controller("ChallengeController", ['$scope', function($scope){
+}])
 
 .config(function($routeProvider){
   $routeProvider
