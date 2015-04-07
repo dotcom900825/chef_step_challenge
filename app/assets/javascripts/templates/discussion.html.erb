@@ -5,21 +5,28 @@
 
   <div class='row'>
     <div class='col-md-4'>
-      <h3>Remove duplicate emails</h3>
+      <h3>Question lists</h3>
 
       <ul class="list-group">
-        <li class="list-group-item"><a href="#/">worker.rb</a> </li>
-        <li class="list-group-item"><a href="#/single_thread_solution">single_thread.rb</a></li>
-        <li class="list-group-item"><a href="#/multi_threaded_solution">multi_thread.rb</a></li>
-        <li class="list-group-item active"><a href="#/discussion">Discussion</a></li>
+        <li class="list-group-item"><a href="#/">Q1</a></li>
+        <li class="list-group-item"><a href="#/q2">Q2</a></li>
+        <li class="list-group-item"><a href="#/q3">Q3</a></li>
+        <li class="list-group-item"><a href="#/q4">Q4</a></li>
+        <li class="list-group-item"><a href="#/worker">Q5: worker.rb</a> </li>
+        <li class="list-group-item"><a href="#/single_thread_solution">Q5: single_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/multi_threaded_solution">Q5: multi_thread.rb</a></li>
+        <li class="list-group-item active"><a href="#/discussion">Q5: Discussion</a></li>
       </ul>
     </div>
 
     <div class='col-md-8'>
       <h4 class='code-header-first'>Discussion and results</h4>
-      <p>
-        The algorithm's time complexity is O(N), the space complexity is also O(N) due to the hash map. For 100000 email addresses with 50% duplicate, the average single thread solution's run time on my 2014's version Macbook Pro (8GB memory, 2.6Ghz I5, 256 GB SSD disk) is around 0.06 seconds, the multi-threads solution (10 workers) is around 0.04seconds. 
-      </p>
+      <section class='answer'>
+        The algorithm's time complexity is O(N), the space complexity is also O(N) due to the hash map. For 100000 email addresses with 50% duplicate, the average single thread solution's run time on my 2014's version Macbook Pro (8GB memory, 2.6Ghz I5, 256 GB SSD disk) is around 0.06 seconds, the multi-threads solution (10 workers) is around 0.04seconds. <hr>
+        For millions of record, a single instance is still able to handle the processing as long as it has enough memory space to fit the data set, to fully leverage the modern multi-processors architecture, we can process the data set using the multi-threads solution. To improve the performence even further, we can rewrite the processing code in C++ and encapsulate it as a callable ruby library. 
+        <hr>
+        For billions of records, a single instance might not be sufficient enough to process the data within reasonable time. In this case, MapReduce might be a plausible solution, but it can't guarantee real-time processing. If real-time feedback and Responsiveness is critical then Apache Spark and Apache Storm might be a good fit in this case.
+      </section>
     </div>
   </div>
 </div>

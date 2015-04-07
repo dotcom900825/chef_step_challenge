@@ -5,18 +5,24 @@
 
   <div class='row'>
     <div class='col-md-4'>
-      <h3>Remove duplicate emails</h3>
+      <h3>Question lists</h3>
 
       <ul class="list-group">
-        <li class="list-group-item"><a href="#/">worker.rb</a> </li>
-        <li class="list-group-item active"><a href="#/single_thread_solution">single_thread.rb</a></li>
-        <li class="list-group-item"><a href="#/multi_threaded_solution">multi_thread.rb</a></li>
-        <li class="list-group-item"><a href="#/discussion">Discussion</a></li>
+        <li class="list-group-item"><a href="#/">Q1</a></li>
+        <li class="list-group-item"><a href="#/q2">Q2</a></li>
+        <li class="list-group-item"><a href="#/q3">Q3</a></li>
+        <li class="list-group-item"><a href="#/q4">Q4</a></li>
+        <li class="list-group-item"><a href="#/worker">Q5: worker.rb</a> </li>
+        <li class="list-group-item active"><a href="#/single_thread_solution">Q5: single_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/multi_threaded_solution">Q5: multi_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/discussion">Q5: Discussion</a></li>
       </ul>
     </div>
 
     <div class='col-md-8'>
       <h4 class='code-header-first'>Single thread solution</h4>
+      <section class='answer'>Here is the code snippet for single thread solution. I leveraged the Faker gem (I used it along with Factory Girl gem for my Rails app testing) to help generate email addresses with 50% duplications. And benchmarked the run time of the solution</section>
+
       <snippet>
   require "benchmark"
   require "faker"
@@ -26,7 +32,7 @@
   output = []
   duplicate_email = Faker::Internet.email
 
-  5000000.times do 
+  500000.times do 
     random_email = Faker::Internet.email
     while random_email != duplicate_email
       email_array << random_email
@@ -36,6 +42,7 @@
   end
 
   test_array = email_array.shuffle
+  worker = Worker.new(test_array)
 
   Benchmark.bm do |bm| 
     bm.report do 

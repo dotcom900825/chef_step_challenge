@@ -1,0 +1,33 @@
+<div class='container'>
+  <div class='text-center logo'>
+    <%= image_tag "logo.png", :width=>200%>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-4'>
+      <h3>Question lists</h3>
+
+      <ul class="list-group">
+        <li class="list-group-item"><a href="#/">Q1</a></li>
+        <li class="list-group-item"><a href="#/q2">Q2</a></li>
+        <li class="list-group-item active"><a href="#/q3">Q3</a></li>
+        <li class="list-group-item"><a href="#/q4">Q4</a></li>
+        <li class="list-group-item"><a href="#/worker">Q5: worker.rb</a> </li>
+        <li class="list-group-item"><a href="#/single_thread_solution">Q5: single_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/multi_threaded_solution">Q5: multi_thread.rb</a></li>
+        <li class="list-group-item"><a href="#/discussion">Q5: Discussion</a></li>
+      </ul>
+    </div>
+
+    <div class='col-md-8'>
+      <h4 class='code-header-first'>What’s the most interesting thing you have read or listened to lately and why? (Book, blog, website, podcast… doesn’t matter).</h4>
+      <section class='answer'>
+        Last quarter I went to a number of colloquium lectures in UCSD, one of talk I find quite intersting is from Mac Schwager, a professor from Boston University. He talked about his research in making groups of aerial, ground or sea robots working collaboratively to provide and monitor dynamic environments and cityscapes. He demonstrated how he leveraged the quadrotor robots to recreate a forrest's landscape's imagery by using only three of them through the distributed optimization based algorithems. And there is another talk about how to use and optimize Amazon's mechanical turk crowedsourcing system to help blind or visual impaired people to "see" the world. Those talks were really eye-opening and inspring for me in terms of how computer science can help in different domains. <br>
+        <video width="700" height="480" controls>
+          <source src="http://cseweb.ucsd.edu/csevideo/Mac.Schwager.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+      </section>
+    </div>
+  </div>
+</div>

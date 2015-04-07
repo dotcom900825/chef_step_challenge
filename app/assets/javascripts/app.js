@@ -6,7 +6,23 @@ angular.module('csChallenge', ['templates', 'ngRoute'])
 .config(["$routeProvider", function($routeProvider){
   $routeProvider
   .when('/', {
-    templateUrl: "index.html",
+    templateUrl: "q1.html",
+    controller: "ChallengeController"
+  })
+  .when('/q2', {
+    templateUrl: "q2.html",
+    controller: "ChallengeController"
+  })
+  .when('/q3', {
+    templateUrl: "q3.html",
+    controller: "ChallengeController"
+  })
+  .when('/q4', {
+    templateUrl: "q4.html",
+    controller: "ChallengeController"
+  })
+  .when('/worker', {
+    templateUrl: "worker.html",
     controller: "ChallengeController"
   })
   .when('/single_thread_solution', {
