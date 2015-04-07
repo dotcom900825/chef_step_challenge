@@ -21,13 +21,14 @@
 
     <div class='col-md-8'>
       <h4 class='code-header-first'>Multi-threads solution</h4>
-      <section class='answer'>Here is the code snippet for multi-threads solution. I used 20 threads in the following solution to help process the email array containing one million records, each thread will help process a sub array of size 50000</section>
+      <section class='answer'>Here is the code snippet for multi-threads solution. I used 20 threads in the following solution to help process the email array containing one million records, each thread will help process a sub array of size 50000. I used a simple hash function for preprocessing, make sure all the same duplicated emails are mapped to the same worker to avoid duplicate emails emerging again from different workers after the processing. </section>
 
       <snippet>
   require "benchmark"
   require "faker"
   require "./worker.rb"
 
+  worker_size = 20
   email_array = []
   output = []
   duplicate_email = Faker::Internet.email
@@ -43,7 +44,12 @@
 
   test_array = email_array.shuffle
 
-  chunked_array = test_array.each_slice(50000).to_a
+  chunked_array = Array.new(worker_size) {[]}
+  test_array.each do |email|
+    hash = email.hash
+    chunked_array[hash % worker_size] << email
+  end
+
   worker_array = []
 
   Benchmark.bm do |bm| 
@@ -58,6 +64,7 @@
 
       threads.each {|thr| thr.join}
       worker_array.map {|worker| output << worker.array}
+      output.flatten!
     end
   end
       </snippet>
