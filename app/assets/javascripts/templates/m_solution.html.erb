@@ -25,11 +25,10 @@
         Here is the code snippet for multi-threads solution. I used 20 threads in the following solution to help process the email array containing one million records, each thread will help process a sub array of size 50000. I used a simple hash function for preprocessing, make sure all the same duplicated emails are mapped to the same worker to avoid duplicate emails emerging again from different workers after the processing. 
         <hr>
         One small issue here is that if the data set has 50% randomly placed duplicates email, then my solution will overburden one worker thread a lot. For example, say we have 1000 emails in total, and 500 of them are duplicates, when we map the data to 5 workers, 4 of them have around 100 emails to process, but one of them has around 600 emails to process due to the duplication emails all get mapped to the same worker. 
-        <br>
+        <hr>
         To tackle this issue, we can set a threshold for each worker, the simplest one might be the (total email size /  worker size). Before the worker starts executing, it can check its array size with the threshold value, if the size is bigger then the threshold value, then it can break its array into evenly sized array chunks and spawn some additional threads to process those chunks. Once all the threads finished executing, we can join the results and remove duplicates again as the final result for the overburdened worker.
-        <br>
+        <hr>
         This can better leverage multi-core environments but might not be too practical.
-        <br>
         A more plausible way might be by maintaining an LRU hash map in memory, when there is new email address shows up and the hash map still has the space, we store it into the hashmap. Otherwise, we expel the least recent record and pop in the new one. For each email address, we check if it exists in hashmap already or not. If is not, we calculate its hash value and map it into a worker. In this way, we can help reduce the amount of emails each worker needs to process, especially the burdened worker. The effectiveness depends on the size of the hashmap we can have in the memory.
       </section>
 
